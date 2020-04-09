@@ -6,23 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | nowfitness-个人技术博客</title>
+  <title>利用python爬虫爬取酷狗Top500歌曲 | nowfitness-个人技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录生活的点点滴滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="nowfitness-个人技术博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="实验目的 爬虫的概念及准备工作。 了解爬虫的类型 理解爬虫的实现原理。 熟悉爬虫三大库：requests、BeautifulSoup、Lxml，安装三个模块，并熟悉其使用 通过对爬虫基础知识及Python爬虫程序设计中所涉及的三大库的学习，本节以获取酷狗网站”TOP500歌曲排行榜”数据为例，实战练习基于Python的简单爬虫程序设计思路及实现过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用python爬虫爬取酷狗Top500歌曲">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/python-spider/index.html">
 <meta property="og:site_name" content="nowfitness-个人技术博客">
-<meta property="og:description" content="记录生活的点点滴滴">
+<meta property="og:description" content="实验目的 爬虫的概念及准备工作。 了解爬虫的类型 理解爬虫的实现原理。 熟悉爬虫三大库：requests、BeautifulSoup、Lxml，安装三个模块，并熟悉其使用 通过对爬虫基础知识及Python爬虫程序设计中所涉及的三大库的学习，本节以获取酷狗网站”TOP500歌曲排行榜”数据为例，实战练习基于Python的简单爬虫程序设计思路及实现过程。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-06T14:57:15.000Z">
+<meta property="article:modified_time" content="2020-03-12T09:28:07.331Z">
 <meta property="article:author" content="nowfitness">
-<meta property="article:tag" content="前端博客">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="html5">
-<meta property="article:tag" content="css3">
-<meta property="article:tag" content="php">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="nowfitness-个人技术博客" type="application/atom+xml">
@@ -167,449 +163,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python-spider" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用python爬虫爬取酷狗Top500歌曲
+    </h1>
+  
+
+        
+        <a href="/2020/02/06/python-spider/" class="archive-article-date">
+  	<time datetime="2020-02-06T14:57:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h1><ol>
+<li>爬虫的概念及准备工作。</li>
+<li>了解爬虫的类型</li>
+<li>理解爬虫的实现原理。</li>
+<li>熟悉爬虫三大库：requests、BeautifulSoup、Lxml，安装三个模块，并熟悉其使用</li>
+<li>通过对爬虫基础知识及Python爬虫程序设计中所涉及的三大库的学习，本节以获取酷狗网站”TOP500歌曲排行榜”数据为例，实战练习基于Python的简单爬虫程序设计思路及实现过程。<a id="more"></a></li>
+</ol>
+<h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><ol>
+<li>通过阅读教材和上网查阅资料了解网络爬虫的现实意义及进行网络爬虫的准备工作：对所爬站点的规模和结构进行大致了解，获取站点自身的robots.txt和sitemap文件。</li>
+<li>了解爬虫类型：通用网络爬虫、聚焦网络爬虫、增量式网络爬虫和深层网络爬虫。</li>
+<li>理解网络爬虫原理及工作流程。</li>
+<li>下载安装Requests库并熟悉其基本使用，掌握爬取定向网页的通用代码框架</li>
+<li>下载安装BeatifulSoup库并熟悉其基本使用</li>
+<li>下载安装Lxml库并熟悉其基本使用</li>
+<li>按照如下步骤完成酷狗网站”TOP500歌曲排行榜”的网页爬取：<blockquote>
+<p>(1)导入Requests模块、BeautifulSoup模块和Time模块<br>(2)定义文件头，模拟浏览器访问，防止网站屏蔽<br>headers ={’User-Agent’: ’Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36’}<br>(3)定义get_info()函数，获取TOP500信息<br>(4)定义实现get_info()函数，用于获取标签中的指定数据<br>(5)定义条件<strong>main</strong>函数,用于获取排行榜数据地址<br>(6)定义for循环遍历urls<br>(7)代码行调用time模块睡眠函数</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span>  bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">headers=&#123;<span class="string">'User.Agent'</span>:<span class="string">'Mozilla/5.0(Windows NT 6.1;WOW64) AppleWebKit/537.36(KHTML,like Gecko) '</span><span class="string">'Chrome/56.0.2924.87 Safari/537.36'</span>&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_info</span><span class="params">(url)</span>:</span></span><br><span class="line">    wb_data=requests.get(url,headers=headers)</span><br><span class="line">    soup=BeautifulSoup(wb_data.text,<span class="string">'lxml'</span>)</span><br><span class="line">    ranks=soup.select(<span class="string">'span.pc_temp_num'</span>)</span><br><span class="line">    titles=soup.select(<span class="string">'div.pc_temp_songlist&gt;ul&gt;li&gt;a'</span>)</span><br><span class="line">    times=soup.select(<span class="string">'span.pc_temp_tips_r&gt;span'</span>)</span><br><span class="line">    <span class="keyword">for</span> rank,title,time <span class="keyword">in</span> zip(ranks,titles,times):</span><br><span class="line">        str1=title.get_text().split(<span class="string">'-'</span>)</span><br><span class="line">        data=&#123;<span class="string">'rank'</span>:rank.get_text().strip(),</span><br><span class="line">              <span class="string">'singer'</span>:str1[<span class="number">0</span>],</span><br><span class="line">              <span class="string">'song'</span>:str1[<span class="number">-1</span>],</span><br><span class="line">              <span class="string">'time'</span>:time.get_text().strip()</span><br><span class="line">              &#125;</span><br><span class="line">        print(data)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    urls=[</span><br><span class="line">     <span class="string">'http://www.kugou.com/yy/rank/home/&#123;&#125;-8888.html'</span>.format(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">24</span>)]</span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">        get_info(url)</span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i><i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://ae01.alicdn.com/kf/Hba4e8ea2a96642fe9c6273d31cc8d86c2.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/php%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%88%90%E5%8F%8C%E8%89%B2%E7%90%83/" class="archive-article-date">
-  	<time datetime="2020-04-08T11:02:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/php%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%88%90%E5%8F%8C%E8%89%B2%E7%90%83/">php函数学习生成双色球</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/06/python-spider/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/php%E6%95%B0%E7%BB%84%E5%AD%A6%E4%B9%A0%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF%E9%81%8D%E5%8E%86/" class="archive-article-date">
-  	<time datetime="2020-04-08T11:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/02/06/python-data-analysis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          python数据分析 
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/03/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo博客搭建过程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/php%E6%95%B0%E7%BB%84%E5%AD%A6%E4%B9%A0%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF%E9%81%8D%E5%8E%86/">php数组学习图书信息遍历</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2-yilia%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95-%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0/" class="archive-article-date">
-  	<time datetime="2020-03-31T13:08:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2-yilia%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95-%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0/">Hexo博客-yilia优化记录(不断更新)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/php%E4%B8%AD%E4%BF%9D%E7%95%99%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E7%9A%84%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2020-03-31T13:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/php%E4%B8%AD%E4%BF%9D%E7%95%99%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E7%9A%84%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE/">php中保留用户提交表单后的输入数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/30/Html%E4%B8%AD%E7%94%A8oncopy%E4%BA%8B%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%88%AB%E4%BA%BA%E5%A4%8D%E5%88%B6%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E6%97%B6%E8%87%AA%E5%8A%A8%E8%BF%BD%E5%8A%A0%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/" class="archive-article-date">
-  	<time datetime="2020-03-30T13:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/30/Html%E4%B8%AD%E7%94%A8oncopy%E4%BA%8B%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%88%AB%E4%BA%BA%E5%A4%8D%E5%88%B6%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E6%97%B6%E8%87%AA%E5%8A%A8%E8%BF%BD%E5%8A%A0%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/">Html中用oncopy事件实现别人复制文章内容时自动追加版权信息</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/30/%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E5%92%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-30T09:18:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/30/%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E5%92%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/">最小公倍数和最大公约数的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/28/%E5%A6%82%E4%BD%95%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-03-28T02:53:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/28/%E5%A6%82%E4%BD%95%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">如何将博客部署到阿里云服务器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">阿里云</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/26/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E7%BB%83%E4%B9%A0%E9%A2%981/" class="archive-article-date">
-  	<time datetime="2020-03-26T08:30:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/26/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E7%BB%83%E4%B9%A0%E9%A2%981/">PHP字符串操作函数练习题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/git-remote-Coding-%E6%8F%90%E7%A4%BA-Authentication-failed/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:46:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/git-remote-Coding-%E6%8F%90%E7%A4%BA-Authentication-failed/">git remote: Coding 提示: Authentication failed!</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Coding</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Coding%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:02:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Coding%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/">把Hexo部署到Coding提高网站访问速度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Coding</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -633,8 +378,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

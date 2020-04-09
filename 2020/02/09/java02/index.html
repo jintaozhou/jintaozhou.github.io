@@ -6,23 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | nowfitness-个人技术博客</title>
+  <title>Java方法继承、方法重载、方法覆盖小总结 | nowfitness-个人技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录生活的点点滴滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="nowfitness-个人技术博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="1、方法继承：  利用extends关键字一个方法继承另一个方法，而且只能直接继承一个类。   当Sub类和Base类在同一个包时Sub类继承Base类中的public&#x2F;protected&#x2F;默认级别的变量个方法 在不同包时继承public&#x2F;protected级别的变量和方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java方法继承、方法重载、方法覆盖小总结">
+<meta property="og:url" content="http://yoursite.com/2020/02/09/java02/index.html">
 <meta property="og:site_name" content="nowfitness-个人技术博客">
-<meta property="og:description" content="记录生活的点点滴滴">
+<meta property="og:description" content="1、方法继承：  利用extends关键字一个方法继承另一个方法，而且只能直接继承一个类。   当Sub类和Base类在同一个包时Sub类继承Base类中的public&#x2F;protected&#x2F;默认级别的变量个方法 在不同包时继承public&#x2F;protected级别的变量和方法。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-09T13:36:03.000Z">
+<meta property="article:modified_time" content="2020-03-12T09:28:07.319Z">
 <meta property="article:author" content="nowfitness">
-<meta property="article:tag" content="前端博客">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="html5">
-<meta property="article:tag" content="css3">
-<meta property="article:tag" content="php">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="nowfitness-个人技术博客" type="application/atom+xml">
@@ -167,242 +163,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java02" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java方法继承、方法重载、方法覆盖小总结
+    </h1>
+  
+
+        
+        <a href="/2020/02/09/java02/" class="archive-article-date">
+  	<time datetime="2020-02-09T13:36:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-09</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1、方法继承："><a href="#1、方法继承：" class="headerlink" title="1、方法继承："></a>1、方法继承：</h1><hr>
+<blockquote>
+<p>利用extends关键字一个方法继承另一个方法，而且只能直接继承一个类。</p>
+</blockquote>
+<ul>
+<li>当Sub类和Base类在同一个包时Sub类继承Base类中的public/protected/默认级别的变量个方法</li>
+<li>在不同包时继承public/protected级别的变量和方法。<a id="more"></a></li>
+</ul>
+<h1 id="2、方法重载："><a href="#2、方法重载：" class="headerlink" title="2、方法重载："></a>2、方法重载：</h1><hr>
+<blockquote>
+<p>如果有两个方法的方法名相同，但参数不一致，哪么可以说一个方法是另一个方法的重载。</p>
+</blockquote>
+<ul>
+<li>方法名相同</li>
+<li>方法的参数类型，个数顺序至少有一项不同</li>
+<li>方法的返回类型可以不相同</li>
+<li>方法的修饰符可以不相同</li>
+<li>main方法也可以被重载</li>
+</ul>
+<h1 id="3、方法覆盖："><a href="#3、方法覆盖：" class="headerlink" title="3、方法覆盖："></a>3、方法覆盖：</h1><hr>
+<blockquote>
+<p>如果在子类中定义一个方法，其名称、返回类型及参数签名正好与父类中某个方法的名称、返回类型及参数签名相匹配，那么可以说，子类的方法覆盖了父类的方法。</p>
+</blockquote>
+<ul>
+<li>子类的方法名称返回类型及参数签名 必须与父类的一致</li>
+<li>子类方法不能缩小父类方法的访问权限</li>
+<li>子类方法不能抛出比父类方法更多的异常</li>
+<li>方法覆盖只存在于子类和父类之间，同一个类中只能重载</li>
+<li>父类的静态方法不能被子类覆盖为非静态方法</li>
+<li>子类可以定义于父类的静态方法同名的静态方法，以便在子类中隐藏父类的静态方法（满足覆盖约束），而且Java虚拟机把静态方法和所属的类绑定，而把实例方法和所属的实例绑定。</li>
+<li>父类的非静态方法不能被子类覆盖为静态方法</li>
+<li>父类的私有方法不能被子类覆盖</li>
+<li>父类的抽象方法可以被子类通过两种途径覆盖（即实现和覆盖）（P169）</li>
+<li>父类的非抽象方法可以被覆盖为抽象方法</li>
+</ul>
+<h1 id="4、Super关键字："><a href="#4、Super关键字：" class="headerlink" title="4、Super关键字："></a>4、Super关键字：</h1><hr>
+<blockquote>
+<p>super和this关键字都可以用来覆盖Java语言的默认作用域，使被屏蔽的方法或变量变为可见（三种情况下的不可见P171）。</p>
+</blockquote>
+<ul>
+<li>父类的成员变量和方法为private使用super访问编译出错</li>
+<li>在类的构造方法种，通过super语句调用这个类的父类的构造方法</li>
+<li>在子类种访问父类的被屏蔽的方法和属性</li>
+<li>只能在构造方法或实例方法内使用super关键字，而在静态方法和静态代码块内不能使用super</li>
+</ul>
+<h1 id="5、多态："><a href="#5、多态：" class="headerlink" title="5、多态："></a>5、多态：</h1><hr>
+<ul>
+<li>对于一个引用类型的变量，Java编译器按照它的声明的类型来处理</li>
+<li>对于一个引用类型的变量，运行时Java虚拟机按照它的实际引用的对象来处理</li>
+<li>运行时环境中，通过引用类型变量来访问所引用对象的方法和属性时，Java虚拟机采用以下绑定规则</li>
+</ul>
+<ol>
+<li>实例方法与引用变量实际引用的对象的方法绑定，属于动态绑定</li>
+<li>静态方法与引用变量所声明的类型的方法绑定，属于静态绑定</li>
+<li>成员变量（包括静态和实例变量）与引用变量所声明的类型的成员变量绑定，属于静态绑定 </li>
+</ol>
+<h1 id="6、继承的利弊和使用原则："><a href="#6、继承的利弊和使用原则：" class="headerlink" title="6、继承的利弊和使用原则："></a>6、继承的利弊和使用原则：</h1><hr>
+<blockquote>
+<p>集成数的层次不可太多<br>集成数的上层为抽象层</p>
+</blockquote>
+<ul>
+<li>（1）定义了下层子类都用友的相同属性和方法，并且尽可能默认实现，从而提高重用性</li>
+<li>（2）代表系统的接口，描述系统所能提供的服务</li>
+<li>继承关系最大的弱点：打破封装</li>
+<li>精心设计专门用于被继承的类</li>
+<li>（1）对这些类必须提供良好的文档说明</li>
+<li>（2）尽可能的封装父类的实现细节，把代表时间细节的属性和方法定义为private类型</li>
+<li>（3）如果某些实现细节必须被子类访问，定义为protected类型</li>
+<li>（4）把不允许子类覆盖的方法定义为final类型</li>
+<li>（5）父类的构造方法不允许调用可被子类覆盖的方法</li>
+<li>（6）如果某些类不是专门为了继承而设计，那么随意继承它是不安全的</li>
+</ul>
+<blockquote>
+<p>转载原文链接：<a href="https://blog.csdn.net/cdsnmdl/article/details/3968688" target="_blank" rel="noopener">https://blog.csdn.net/cdsnmdl/article/details/3968688</a></p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i><i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://ae01.alicdn.com/kf/Hba4e8ea2a96642fe9c6273d31cc8d86c2.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/php%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%88%90%E5%8F%8C%E8%89%B2%E7%90%83/" class="archive-article-date">
-  	<time datetime="2020-04-08T11:02:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/php%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%88%90%E5%8F%8C%E8%89%B2%E7%90%83/">php函数学习生成双色球</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/php%E6%95%B0%E7%BB%84%E5%AD%A6%E4%B9%A0%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF%E9%81%8D%E5%8E%86/" class="archive-article-date">
-  	<time datetime="2020-04-08T11:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/php%E6%95%B0%E7%BB%84%E5%AD%A6%E4%B9%A0%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF%E9%81%8D%E5%8E%86/">php数组学习图书信息遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2-yilia%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95-%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0/" class="archive-article-date">
-  	<time datetime="2020-03-31T13:08:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/Hexo%E5%8D%9A%E5%AE%A2-yilia%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95-%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0/">Hexo博客-yilia优化记录(不断更新)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/31/php%E4%B8%AD%E4%BF%9D%E7%95%99%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E7%9A%84%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2020-03-31T13:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/31/php%E4%B8%AD%E4%BF%9D%E7%95%99%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E7%9A%84%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE/">php中保留用户提交表单后的输入数据</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/30/Html%E4%B8%AD%E7%94%A8oncopy%E4%BA%8B%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%88%AB%E4%BA%BA%E5%A4%8D%E5%88%B6%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E6%97%B6%E8%87%AA%E5%8A%A8%E8%BF%BD%E5%8A%A0%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/" class="archive-article-date">
-  	<time datetime="2020-03-30T13:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/30/Html%E4%B8%AD%E7%94%A8oncopy%E4%BA%8B%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%88%AB%E4%BA%BA%E5%A4%8D%E5%88%B6%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E6%97%B6%E8%87%AA%E5%8A%A8%E8%BF%BD%E5%8A%A0%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/">Html中用oncopy事件实现别人复制文章内容时自动追加版权信息</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/30/%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E5%92%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-30T09:18:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/30/%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E5%92%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/">最小公倍数和最大公约数的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -414,202 +303,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/09/java02/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/28/%E5%A6%82%E4%BD%95%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-03-28T02:53:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/02/17/s1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          高数第一章函数与极限知识点框架
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/09/javao1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java错题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/28/%E5%A6%82%E4%BD%95%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">如何将博客部署到阿里云服务器</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">阿里云</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/26/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E7%BB%83%E4%B9%A0%E9%A2%981/" class="archive-article-date">
-  	<time datetime="2020-03-26T08:30:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/26/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0%E7%BB%83%E4%B9%A0%E9%A2%981/">PHP字符串操作函数练习题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/git-remote-Coding-%E6%8F%90%E7%A4%BA-Authentication-failed/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:46:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/git-remote-Coding-%E6%8F%90%E7%A4%BA-Authentication-failed/">git remote: Coding 提示: Authentication failed!</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Coding</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Coding%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:02:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Coding%E6%8F%90%E9%AB%98%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/">把Hexo部署到Coding提高网站访问速度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网站优化</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Coding</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -633,8 +434,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
